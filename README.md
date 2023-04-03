@@ -37,7 +37,7 @@ end
 
 4. ¿Qué ocurre si el resultado de la suma excede el tamaño del registro en el que se almacena?
 
-El flag de overfload (O) cambia su valor a 1.
+El flag de *overfload* `(O)` cambia su valor a 1.
 
 ### *Ejercicio 2:* Codifique un programa que reste dos números. ¿Qué ocurre si el resultado es menor a 0?
 
@@ -51,7 +51,7 @@ org 2000h
 end
 ```
 
-Si el resultado es menor a 0 el flag de signo (S) cambia su valor a 1.
+Si el resultado es menor a 0 el flag de *signo* `(S)` cambia su valor a 1.
 
 ### *Ejercicio 3:* Codifique un programa que sea capaz de multiplicar dos números teniendo en cuenta el set de instrucciones del MSX88. Para ello:
 
