@@ -8,31 +8,31 @@ Actividades de Arquitectura de PC de UNaHur
 1. Los dos números a sumar se encuentran en los registros AX y BX.
 
 ```assembly
-ORG 2000h
-    ADD AX, BX
-END
+org 2000h
+    add AX, BX
+end
 ```
 
 2. Uno de los números a sumar se encuentra en un registro, mientras que el otro se encuentra en memoria.
 
 ```assembly
-ORG 1000h
-    primer_nro DW 0123h
-ORG 2000h
-    ADD AX, segundo_nro
-END
+org 1000h
+    primer_nro dw 0123h
+org 2000h
+    add AX, segundo_nro
+end
 ```
 
 3. ¿Cómo realizaría la suma de dos números que se encuentran almacenados en la memoria?
 
 ```assembly
-ORG 1000h
-    primer_nro DW 0AAAAh
-    segundo_nro DW 5555h
-ORG 2000h
-    MOV AX, primer_nro
-    ADD AX, segundo_nro
-END
+org 1000h
+    primer_nro dw 0AAAAh
+    segundo_nro dw 5555h
+org 2000h
+    mov AX, primer_nro
+    add AX, segundo_nro
+end
 ```
 
 4. ¿Qué ocurre si el resultado de la suma excede el tamaño del registro en el que se almacena?
@@ -42,13 +42,13 @@ El flag de overfload (O) cambia su valor a 1.
 ### *Ejercicio 2:* Codifique un programa que reste dos números. ¿Qué ocurre si el resultado es menor a 0?
 
 ```assembly
-ORG 1000h
-    primer_nro DW 0AAAAh
-    segundo_nro DW 5555h
-ORG 2000h
-    MOV AX, primer_nro
-    SUB AX, segundo_nro
-END
+org 1000h
+    primer_nro dw 0AAAAh
+    segundo_nro dw 5555h
+org 2000h
+    mov AX, primer_nro
+    sub AX, segundo_nro
+end
 ```
 
 Si el resultado es menor a 0 el flag de signo (S) cambia su valor a 1.
