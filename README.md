@@ -66,29 +66,31 @@ Si el resultado es menor a 0 el flag de *signo* `(S)` cambia su valor a 1.
 
 ```assembly
 org 1000h
-        primer_nro dw 0h      ;1000
-        segundo_nro dw 2h     ;1002
-        resultado dw ?        ;1004
+        primer_nro dw 5       ; 1000
+        segundo_nro dw 3      ; 1001
+        resultado dw 0        ; 1002
 org 2000h
-        mov CX, 0             ; incializo el registro acumulador
-        cmp primer_nro, 0     ; me aseguro que el primer termino no es 0
-        jz FIN                ; si lo es finalizo
-        mov AL, primer_nro    ; cargo el primer termino
-        mov BL, 0             ; inicializo el iterador
-ITERAR: cmp segundo_nro, BL   ; comparo el iterador con el segundo termino
-        jz FIN                ; si no son iguales sigo
-        add CL, AL            ; sumo en el acumular el primer_nro almacenado en AL
-        inc BL                ; incremeneto el iterador
-        jmp ITERAR            ; itero
-FIN:    mov resultado, CX     ; al final envio el resultado a resultado
-        hlt                   ; finalizo programa
+        mov BL, primer_nro    ; envio a la pila el primer_nro
+        mov DL, segundo_nro   ; envio a la pila el segundo_nro
+        call MUL              ; llamo a la funcion multiplicar
+        mov resultado, AL     ; el resultado acumulado en AL se guarda en resultado
+        hlt                   ; detengo la ejercucion
+MUL:    mov AL, 0             ; inicializo el registro AL donde almaceno el resultado
+        cmp BL, 0             ; verifico que el primero_nro no sea 0
+        jz FIN                ; si lo es voy a FIN
+        mov CL, 0             ; inicializo el contador CL en 0
+ITERAR: cmp DL, CL            ; comparo si el segundo_nro es igual al contador CL
+        jz FIN                ; si lo es voy a FIN (a su vez la primera vez verifica que segundo_nro no sea 0)
+        add AL, BL            ; voy acumulando la suma del primer_nro en AL
+        inc CL                ; incremento CL
+        jmp ITERAR            ; itero tantas veces como segundo_nro
+FIN:    ret
 
 end
+
 ```
 
 2. Modifique el código anterior y realice una subrutina para la multiplicación que sea llamada desde el programa principal.
-
-### *Ejercicio 4:* Codifique un programa que sea capaz de contar la cantidad de letras “a” presentes en una cadena de caracteres.
 
 ```assembly
 org 1000h
@@ -110,4 +112,8 @@ FIN:    mov resultado, CX     ; al final envio el resultado a resultado
         hlt                   ; finalizo programa
 
 end
+
 ```
+
+
+### *Ejercicio 4:* Codifique un programa que sea capaz de contar la cantidad de letras “a” presentes en una cadena de caracteres.
