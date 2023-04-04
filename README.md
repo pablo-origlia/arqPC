@@ -8,7 +8,8 @@ Actividades de Arquitectura de PC de UNaHur
 1. Los dos números a sumar se encuentran en los registros AX y BX.
 
 ```assembly
-add AX, BX
+   add AX, BX
+   hlt
 end
 
 ```
@@ -16,8 +17,11 @@ end
 2. Uno de los números a sumar se encuentra en un registro, mientras que el otro se encuentra en memoria.
 
 ```assembly
-primer_nro dw 0123h
-add AX, primer_nro
+org 1000h    
+    primer_nro dw 23h
+org 2000h
+    add AX, primer_nro
+    hlt
 end
 
 ```
@@ -26,11 +30,12 @@ end
 
 ```assembly
 org 1000h
-    primer_nro dw 0AAAAh
-    segundo_nro dw 5555h
+    primer_nro dw 12h
+    segundo_nro dw 23h
 org 2000h
     mov AX, primer_nro
     add AX, segundo_nro
+    hlt
 end
 
 ```
@@ -43,11 +48,12 @@ El flag de *overfload* `(O)` cambia su valor a 1.
 
 ```assembly
 org 1000h
-    primer_nro dw 0AAAAh
-    segundo_nro dw 5555h
+    primer_nro dw 5423h
+    segundo_nro dw 1212h
 org 2000h
     mov AX, primer_nro
     sub AX, segundo_nro
+    hlt
 end
 
 ```
@@ -60,24 +66,48 @@ Si el resultado es menor a 0 el flag de *signo* `(S)` cambia su valor a 1.
 
 ```assembly
 org 1000h
-        primer_nro dw 5h
-        segundo_nro dw 6h
-        resultado dw ?
+        primer_nro dw 0h      ;1000
+        segundo_nro dw 2h     ;1002
+        resultado dw ?        ;1004
 org 2000h
-        mov AL, primer_nro
-        mov CL, segundo_nro
-ITERAR: cmp CL, 0
-        jnz FIN
-        add AL, primer_nro
-        dec CL
-        jmp ITERAR
-FIN:    mov resultado, AL
-        hlt
-end
+        mov CX, 0             ; incializo el registro acumulador
+        cmp primer_nro, 0     ; me aseguro que el primer termino no es 0
+        jz FIN                ; si lo es finalizo
+        mov AL, primer_nro    ; cargo el primer termino
+        mov BL, 0             ; inicializo el iterador
+ITERAR: cmp segundo_nro, BL   ; comparo el iterador con el segundo termino
+        jz FIN                ; si no son iguales sigo
+        add CL, AL            ; sumo en el acumular el primer_nro almacenado en AL
+        inc BL                ; incremeneto el iterador
+        jmp ITERAR            ; itero
+FIN:    mov resultado, CX     ; al final envio el resultado a resultado
+        hlt                   ; finalizo programa
 
+end
 ```
 
 2. Modifique el código anterior y realice una subrutina para la multiplicación que sea llamada desde el programa principal.
 
 ### *Ejercicio 4:* Codifique un programa que sea capaz de contar la cantidad de letras “a” presentes en una cadena de caracteres.
 
+```assembly
+org 1000h
+        primer_nro dw 0h      ;1000
+        segundo_nro dw 2h     ;1002
+        resultado dw ?        ;1004
+org 2000h
+        mov CX, 0             ; incializo el registro acumulador
+        cmp primer_nro, 0     ; me aseguro que el primer termino no es 0
+        jz FIN                ; si lo es finalizo
+        mov AL, primer_nro    ; cargo el primer termino
+        mov BL, 0             ; inicializo el iterador
+ITERAR: cmp segundo_nro, BL   ; comparo el iterador con el segundo termino
+        jz FIN                ; si no son iguales sigo
+        add CL, AL            ; sumo en el acumular el primer_nro almacenado en AL
+        inc BL                ; incremeneto el iterador
+        jmp ITERAR            ; itero
+FIN:    mov resultado, CX     ; al final envio el resultado a resultado
+        hlt                   ; finalizo programa
+
+end
+```
