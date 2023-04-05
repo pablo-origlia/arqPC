@@ -72,17 +72,17 @@ org 1000h
         segundo_nro dw 2h     ; 1002
         resultado dw ?        ; 1004
 org 2000h
-        mov AL, 0             ; incializo el registro acumulador
+        mov AX, 0             ; incializo el registro acumulador
         cmp primer_nro, 0     ; me aseguro que el primer termino no es 0
         jz FIN                ; si lo es finalizo
-        mov BL, primer_nro    ; cargo el primer termino
-        mov CL, 0             ; inicializo el contador
-ITERAR: cmp segundo_nro, CL   ; comparo el contador con el segundo termino
+        mov BX, primer_nro    ; cargo el primer termino
+        mov CX, 0             ; inicializo el contador
+ITERAR: cmp segundo_nro, CX   ; comparo el contador con el segundo termino
         jz FIN                ; si no son iguales sigo (a su vez la primera vez verifica que segundo_nro no sea 0)
-        add AL, BL            ; sumo en el acumular el primer_nro almacenado en AL
-        inc CL                ; incremeneto el contador
+        add AX, BX            ; sumo en el acumular el primer_nro almacenado en AL
+        inc CX                ; incremeneto el contador
         jmp ITERAR            ; itero
-FIN:    mov resultado, AL     ; al final envio el resultado a resultado
+FIN:    mov resultado, AX     ; al final envio el resultado a resultado
         hlt                   ; finalizo programa
 
 end
@@ -97,19 +97,19 @@ org 1000h
         segundo_nro dw 3      ; 1001
         resultado dw 0        ; 1002
 org 2000h
-        mov BL, primer_nro    ; envio a BL el primer_nro
-        mov DL, segundo_nro   ; envio a DL el segundo_nro
+        mov BX, primer_nro    ; envio a BX el primer_nro
+        mov DX, segundo_nro   ; envio a DX el segundo_nro
         call MUL              ; llamo a la funcion multiplicar
-        mov resultado, AL     ; el resultado acumulado en AL se guarda en resultado
+        mov resultado, AX     ; el resultado acumulado en AX se guarda en resultado
         hlt                   ; detengo la ejercucion
-MUL:    mov AL, 0             ; inicializo el registro AL donde almaceno el resultado
-        cmp BL, 0             ; verifico que el primero_nro no sea 0
+MUL:    mov AX, 0             ; inicializo el registro AX donde almaceno el resultado
+        cmp BX, 0             ; verifico que el primero_nro no sea 0
         jz FIN                ; si lo es voy a FIN
-        mov CL, 0             ; inicializo el contador CL en 0
-ITERAR: cmp DL, CL            ; comparo si el segundo_nro es igual al contador CL
+        mov CX, 0             ; inicializo el contador CX en 0
+ITERAR: cmp DX, CX            ; comparo si el segundo_nro es igual al contador CX
         jz FIN                ; si lo es voy a FIN (a su vez la primera vez verifica que segundo_nro no sea 0)
-        add AL, BL            ; voy acumulando la suma del primer_nro en AL
-        inc CL                ; incremento CL
+        add AX, BX            ; voy acumulando la suma del primer_nro en AX
+        inc CX                ; incremento CX
         jmp ITERAR            ; itero tantas veces como segundo_nro
 FIN:    ret
 
