@@ -135,6 +135,22 @@ end
 
 ### *Ejercicio 4:* Codifique un programa que sea capaz de contar la cantidad de letras “a” presentes en una cadena de caracteres.
 
+```mermaid
+flowchart TD
+    A([Inicio]) --> B(BX = inicio_cadena) 
+    B --> C(CL = tamanio_cadena)
+    C --> D(DL = 0)
+    D --> E(AL = BX)
+    E --> F(BX = BX + 1)
+    F --> G{AL = letra?}
+    G ---->|Yes| H(DL = DL + 1)
+    G -->|No| I(CL = CL - 1)
+    I --> G
+    H --> I
+    I --> J[/Mostar DL/]
+    J --> Z([Fin])
+```
+
 ```assembly
 org 1000h
         letra db 'a'  ; Letra a buscar
