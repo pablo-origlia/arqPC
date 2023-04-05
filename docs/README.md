@@ -74,12 +74,12 @@ Si el resultado es menor a 0 el flag de *signo* `(S)` cambia su valor a 1.
 flowchart TD
     A([Inicio]) --> B(AX = 0) 
     B --> C{primer_nro = 0?}
-    C -->|Yes| D[resultado = AX]
-    C ---->|No| E[BX = primer_nro]
+    C -->|si| D[resultado = AX]
+    C ---->|no| E[BX = primer_nro]
     E --> F(CX = 0)
     F --> G{segundo_nro = CX?}
-    G -->|Yes| D
-    G ---->|No| H(AX = AX + BX)
+    G -->|si| D
+    G ---->|no| H(AX = AX + BX)
     H --> I(CX = CX +1)
     I --> G
     D --> Z([Fin])
@@ -149,8 +149,8 @@ flowchart TD
     D --> E(AL = BX)
     E --> F(BX = BX + 1)
     F --> G{AL = letra?}
-    G ---->|Yes| H(DL = DL + 1)
-    G -->|No| I(CL = CL - 1)
+    G ---->|si| H(DL = DL + 1)
+    G -->|no| I(CL = CL - 1)
     I --> G
     H --> I
     I --> J[/Mostar DL/]
