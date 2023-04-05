@@ -1,4 +1,4 @@
-<img align="right" src="unahur.png" height="80">
+<img align="right" src="./images/unahur.png" height="80">
 
 # Arquitectura de Computadoras (782)
 
