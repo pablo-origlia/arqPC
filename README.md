@@ -1,8 +1,9 @@
-# Arquitectura de Computadoras <img align="right" height="100" src="unahur.png">
+<img align="right" src="unahur.png" height="80">
 
-Profesora: *Ing. Celeste Guagliano*
+# Arquitectura de Computadoras (782)
 
-Alumno: *Pablo D. Origlia*
+- Profesora: *Ing. Celeste Guagliano*
+- Alumno: *Pablo D. Origlia*
 
 ## Actividades del laboratorio 1 primer cuatrimestre 2023
 
