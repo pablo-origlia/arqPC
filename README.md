@@ -64,6 +64,22 @@ Si el resultado es menor a 0 el flag de *signo* `(S)` cambia su valor a 1.
 
 1. Dividir la memoria entre el espacio para las variables necesarias y el espacio del código principal del programa.
 
+```mermaid
+flowchart TD
+    A([Inicio]) --> B(AX = 0) 
+    B --> C{primer_nro = 0?}
+    C -->|Yes| D[resultado = AX]
+    C ---->|No| E[BX = primer_nro]
+    E --> F(CX = 0)
+    F --> G{segundo_nro = CX?}
+    G -->|Yes| D
+    G ---->|No| H(AX = AX + BX)
+    H --> I(CX = CX +1)
+    I --> G
+    D --> Z([Fin])
+
+```
+
 
 ```assembly
 
