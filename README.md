@@ -1,9 +1,14 @@
-# arqPC
-Actividades de Arquitectura de PC de UNaHur
+# Arquitectura de Computadoras <img align="right" height="100" src="unahur.png">
 
-## Laboratorio 1 - Actividades
+Profesora: *Ing. Celeste Guagliano*
 
-### *Ejercicio 1:* Codifique un programa que sume dos números con las siguientes características:
+Alumno: *Pablo D. Origlia*
+
+## Actividades del laboratorio 1 primer cuatrimestre 2023
+
+### Laboratorio 1 - Actividades
+
+#### *Ejercicio 1:* Codifique un programa que sume dos números con las siguientes características:
 
 1. Los dos números a sumar se encuentran en los registros AX y BX.
 
@@ -44,7 +49,7 @@ end
 
 El flag de *overfload* `(O)` cambia su valor a 1.
 
-### *Ejercicio 2:* Codifique un programa que reste dos números. ¿Qué ocurre si el resultado es menor a 0?
+#### *Ejercicio 2:* Codifique un programa que reste dos números. ¿Qué ocurre si el resultado es menor a 0?
 
 ```assembly
 org 1000h
@@ -60,7 +65,7 @@ end
 
 Si el resultado es menor a 0 el flag de *signo* `(S)` cambia su valor a 1.
 
-### *Ejercicio 3:* Codifique un programa que sea capaz de multiplicar dos números teniendo en cuenta el set de instrucciones del MSX88. Para ello:
+#### *Ejercicio 3:* Codifique un programa que sea capaz de multiplicar dos números teniendo en cuenta el set de instrucciones del MSX88. Para ello:
 
 1. Dividir la memoria entre el espacio para las variables necesarias y el espacio del código principal del programa.
 
@@ -133,7 +138,7 @@ end
 
 ```
 
-### *Ejercicio 4:* Codifique un programa que sea capaz de contar la cantidad de letras “a” presentes en una cadena de caracteres.
+#### *Ejercicio 4:* Codifique un programa que sea capaz de contar la cantidad de letras “a” presentes en una cadena de caracteres.
 
 ```mermaid
 flowchart TD
