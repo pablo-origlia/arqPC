@@ -1,4 +1,4 @@
-- name: Github Markdown to HTML
+name: 'Markdown to HTML'
   # You may pin to the exact commit or the version.
   # uses: repolevedavaj/github-markdown-to-html@9f6e2ac91840484d3dd2ba72eb45134d7f187614
   uses: repolevedavaj/github-markdown-to-html@v1.0.0
